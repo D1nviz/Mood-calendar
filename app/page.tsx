@@ -1,6 +1,6 @@
 
 export default function Home() {
   return (
-   <>Hello</>
+   <h1> Home page </h1>
   )
 }

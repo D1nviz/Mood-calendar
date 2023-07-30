@@ -1,10 +1,9 @@
-import GoogleButton from "@/components/GoogleButton";
+import RegistrationForm from "@/modules/RegistrationForm";
 
 export default async function Signin() {
   return (
-    <div>
-      <h1>SignIn</h1>
-      <GoogleButton/>
+    <div className="flex justify-center mt-16">
+      <RegistrationForm />
     </div>
-  )
+  );
 }
