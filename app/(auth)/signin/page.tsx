@@ -1,4 +1,4 @@
-import RegistrationForm from "@/modules/RegistrationForm";
+import RegistrationForm from "@/components/forms/RegistrationForm";
 
 export default async function Signin() {
   return (

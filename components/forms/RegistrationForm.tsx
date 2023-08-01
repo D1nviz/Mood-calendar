@@ -6,14 +6,15 @@ import { useSearchParams } from "next/navigation";
 
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
+import Button from "../ui/Button";
 
 const RegistrationForm: FC = () => {
   const searchParams = useSearchParams();
   const callbackUrl = searchParams.get("callbackUrl") || "/profile";
 
   return (
-    <form className="flex flex-col w-96 bg-white items-center px-10 py-12 k rounded-lg shadow-lg border">
-      <h1 className=" text-4xl">Sign In</h1>
+    <form className="flex flex-col items-center w-96 py-12 bg-white px-10  rounded-lg shadow-lg border">
+      <h1 className=" text-4xl text-center">Sign In</h1>
       <div className="flex flex-col w-64 mt-6">
         <label htmlFor="e-mail" className="text-lg">
           E-mail
@@ -35,9 +36,7 @@ const RegistrationForm: FC = () => {
           placeholder="Enter password"
         />
       </div>
-      <button className="bg-rose-500 w-28 py-2 px-5 my-5 text-base text-white rounded-2xl transition-all duration-300 hover:bg-rose-600 hover:-translate-y-[2.5px]">
-        Sign in
-      </button>
+      <Button> Sign in</Button>
       <div className="flex items-center">
         <hr className="horizontal-line" />
         <span>Or sign with</span>
