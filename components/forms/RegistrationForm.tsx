@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
+
 import Button from "../ui/Button";
 
 const RegistrationForm: FC = () => {

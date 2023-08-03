@@ -12,5 +12,13 @@ body {
 }
 
 .horizontal-line {
-  @apply w-16 h-[.5px] mx-2 bg-dark-primary border-0
+  @apply w-16 h-[1px] mx-2 border-0 bg-dark-primary
+}
+
+.nav-item {
+  @apply py-3 px-12 mb-1  
+}
+
+.active {
+  @apply bg-zinc-500
 }

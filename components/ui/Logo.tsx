@@ -5,7 +5,7 @@ import logo from "../../public/logo.svg";
 
 const Logo: FC = () => {
   return (
-      <Image className="w-10 h-10" src={logo} alt="Logo" />
+      <Image className="w-12 h-12" src={logo} alt="Logo" />
   );
 };
 
