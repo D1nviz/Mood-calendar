@@ -5,7 +5,7 @@ import { FC } from "react";
 const Contacts: FC = () => {
   return (
     <h1>
-      settings
+      contacts
     </h1>
   );
 

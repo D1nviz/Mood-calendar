@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
- font-family: 'Times New Roman', Times, serif;
-}
-
 .reg-input {
   @apply  outline-none  text-sm rounded-xl py-2 my-2 px-3 border border-dark-primary focus:border-rose-500 focus:shadow-sm focus:shadow-rose-200
   

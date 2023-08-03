@@ -16,7 +16,7 @@ const Navigation: FC <INavigation> = () => {
     <nav>
       <ul className="flex flex-col text-sm uppercase ">
         {links.map(({ label, path }, i) => (
-          <Link as={"a"} key={i} href={path}>
+          <Link  key={i} href={path}>
             <li
               className={currentPath === path ? "nav-item active" : "nav-item"}
             >
