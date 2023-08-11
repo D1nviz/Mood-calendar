@@ -1,1 +1,1 @@
-export const days = ["Mon, Tue, Wed, Thu, Fri, Sut, Sun"];
+export const days:string[] = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];

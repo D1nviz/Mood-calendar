@@ -1,5 +1,5 @@
-
-import Calendar from "@/components/ui/Calendar";
+import Calendar from "@/components/calendar/Calendar";
+import CalendarHead from "@/components/calendar/CalendarHead";
 import { FC } from "react";
 
 const Home: FC = () => {
@@ -8,9 +8,10 @@ const Home: FC = () => {
   
 
   return (
-    <h1>
+    <div>
+      <CalendarHead />
       <Calendar/>
-    </h1>
+    </div>
   );
 };
 

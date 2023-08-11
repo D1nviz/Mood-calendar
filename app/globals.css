@@ -12,9 +12,9 @@
 }
 
 .nav-item {
-  @apply py-3 px-12 mb-1  
+  @apply py-2 px-3 rounded-md flex flex-col items-center mb-2
 }
 
 .active {
-  @apply bg-zinc-500
+  @apply bg-dark-secondary
 }

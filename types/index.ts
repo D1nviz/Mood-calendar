@@ -1,9 +1,11 @@
-export interface ILink {
+
+
+export type ILink = {
   label: string,
   path: string
 }
 
-export interface IDate {
+export type IDate  = {
   id: string,
   year: string,
   month: string,

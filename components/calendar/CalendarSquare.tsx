@@ -7,7 +7,7 @@ interface ICalendarSquare{
 
 const CalendarSquare: FC<ICalendarSquare> = ({date}) => {
   return (
-    <div className="col-span-1 bg-gray-200 h-16">
+    <div className="col-span-1 rounded border border-dark-tertiary h-16 text-right py-1 px-2">
       {date.date}
     </div>
   );
