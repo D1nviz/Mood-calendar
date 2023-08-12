@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
-import Wrapper from "@/components/layouts/Wrapper";
 
 export const metadata: Metadata = {
   title: "Mood Calendar",
