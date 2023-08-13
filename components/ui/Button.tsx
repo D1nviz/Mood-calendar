@@ -1,10 +1,10 @@
 import { FC } from "react";
 
-interface IButton extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   children: string;
 }
 
-const Button: FC<IButton> = ({ children, ...props }) => {
+const Button: FC<ButtonProps> = ({ children, ...props }) => {
   return (
     <button
       {...props}

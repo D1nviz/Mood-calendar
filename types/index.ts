@@ -1,5 +1,3 @@
-
-
 export type ILink = {
   label: string,
   path: string

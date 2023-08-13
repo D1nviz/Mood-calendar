@@ -8,11 +8,11 @@ import { HiOutlineHome } from "react-icons/hi";
 import { links } from "@/configs/links";
 import { ILink } from "@/types";
 
-interface INavigation {
+interface NavigationProps {
   links: ILink[];
 }
 
-const Navigation: FC<INavigation> = () => {
+const Navigation: FC<NavigationProps> = () => {
   const currentPath = usePathname();
   return (
     <nav>
