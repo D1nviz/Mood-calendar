@@ -14,12 +14,14 @@ interface CalendarSquareProps {
 }
 
 const calendarSquareVariants = cva(
-  "relative grid grid-cols-3 grid-rows-3 items-center rounded border border-dark-secondary h-16 text-right py-1 px-2 duration-200 group",
+  "relative grid grid-cols-3 grid-rows-3 items-center rounded h-16 text-right py-1 px-2 duration-200 group",
   {
     variants: {
       variant: {
-        default: "bg-dark-secondary hover:border-dark-tertiary",
-        ghost: "bg-[#272727] text-[#606060]",
+        default:
+          "bg-dark-secondary border border-transparent hover:border-dark-tertiary",
+        ghost: "bg-dark-primary text-dark-tertiary",
+        active: "bg-dark-tertiary border border-text-color-primary",
       },
     },
     defaultVariants: {
@@ -32,10 +34,14 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedEmoji, setSelectedEmoji] = useState<string>("unselected");
 
-  const currentMonth = moment().format("MM");
-  const CurrentEmoji = emoji.find(e => e.id === selectedEmoji)?.Icon;
-  
-  const variant = date.month === currentMonth ? "default" : "ghost";
+  const isCurrentMonth = date.month === moment().format("MM");
+  const CurrentEmoji = emoji.find((e) => e.id === selectedEmoji)?.Icon;
+
+  const variant = isCurrentMonth
+    ? moment().format("DD") === date.date
+      ? "active"
+      : "default"
+    : "ghost";
 
   const handleMoodButtonClick = () => {
     setIsModalOpen(!isModalOpen);
@@ -46,10 +52,9 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
       <div className="col-span-3 grid-rows-1">{date.date}</div>
       <div className="col-span-3 flex justify-center items-center">
         {selectedEmoji === "unselected" ? (
-          <MoodButton
-            className="hidden group-hover:flex"
-            onClick={handleMoodButtonClick}
-          />
+          isCurrentMonth ? (
+            <MoodButton onClick={handleMoodButtonClick} />
+          ) : null
         ) : (
           <CurrentEmoji
             size={36}
@@ -58,13 +63,13 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
           />
         )}
       </div>
-      {isModalOpen && (
-        <MoodModal
-          emoji={emoji}
-          setSelectedEmoji={setSelectedEmoji}
-          setIsModalOpen={setIsModalOpen}
-        />
-      )}
+
+      <MoodModal
+        emoji={emoji}
+        setSelectedEmoji={setSelectedEmoji}
+        setIsModalOpen={setIsModalOpen}
+        isModalOpen={isModalOpen}
+      />
     </div>
   );
 };

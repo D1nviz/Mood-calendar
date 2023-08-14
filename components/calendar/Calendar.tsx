@@ -9,7 +9,7 @@ const Calendar: FC = () => {
 
   //Todos
 
-  //Add help button, modal with intruction
+  //Add help button, modal with instruction
   //Add Blur & Shade after open emoji modal
   //Finalize registration & login
   //Add db to project

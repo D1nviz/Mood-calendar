@@ -12,9 +12,11 @@
 }
 
 .nav-item {
-  @apply py-2 rounded-md flex flex-col items-center mb-2
+  @apply py-2 rounded-md flex flex-col items-center mb-2 hover:bg-dark-tertiary duration-200
 }
-
+.my-blur {
+  backdrop-filter: blur(100px);
+}
 .active {
   @apply bg-dark-tertiary
 }
