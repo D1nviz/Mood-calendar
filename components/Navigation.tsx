@@ -30,7 +30,7 @@ const Navigation: FC = () => {
               </li>
             </Link>
           ))}
-          <li className="nav-item" onClick={handleModal}>
+          <li className="nav-item cursor-pointer" onClick={handleModal}>
             <BiBook size={22} />
             Guidance
           </li>

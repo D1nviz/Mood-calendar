@@ -1,6 +1,7 @@
 "use client";
 
 import { FC, useState } from "react";
+import { motion } from "framer-motion";
 import { cva } from "class-variance-authority";
 import moment from "moment";
 import { IDate } from "@/types";
@@ -56,11 +57,18 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
             <MoodButton onClick={handleMoodButtonClick} />
           ) : null
         ) : (
-          <CurrentEmoji
-            size={36}
-            onClick={handleMoodButtonClick}
-            cursor={"pointer"}
-          />
+          <motion.div
+            initial={{ opacity: 0.25, rotateX: 0 }}
+            animate={{ opacity: 1, y: 0, rotateY: 360 }}
+            transition={{ duration: 0.5 }}
+            whileHover={{ rotateY: 180 }}
+          >
+            <CurrentEmoji
+              size={36}
+              onClick={handleMoodButtonClick}
+              cursor={"pointer"}
+            />
+          </motion.div>
         )}
       </div>
 
