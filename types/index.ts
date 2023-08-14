@@ -1,6 +1,9 @@
+import { IconType } from "react-icons"
+
 export type ILink = {
   label: string,
-  path: string
+  path: string,
+  Icon: IconType
 }
 
 export type IDate  = {

@@ -12,9 +12,22 @@
 }
 
 .nav-item {
-  @apply py-2 px-3 rounded-md flex flex-col items-center mb-2
+  @apply py-2 rounded-md flex flex-col items-center mb-2
 }
 
 .active {
-  @apply bg-dark-secondary
+  @apply bg-dark-tertiary
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f1f1f;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  background: #353535;
 }

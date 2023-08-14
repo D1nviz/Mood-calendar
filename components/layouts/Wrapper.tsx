@@ -6,7 +6,7 @@ interface WrapperProps extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 const Wrapper: FC<WrapperProps> = ({className, children }) => {
-  return <div className={cn("max-w-[90%] mx-auto", className )}>{children}</div>;
+  return <div className={cn("mx-auto", className )}>{children}</div>;
 };
 
 export default Wrapper;

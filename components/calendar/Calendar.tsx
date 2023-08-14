@@ -7,8 +7,17 @@ import CalendarHead from "./CalendarHead";
 const Calendar: FC = () => {
   const calendar = createCalendar();
 
+  //Todos
+
+  //Add help button, modal with intruction
+  //Add Blur & Shade after open emoji modal
+  //Finalize registration & login
+  //Add db to project
+  //Add Profile with statistic 
+  //Add Animations (framer)
+
   return (
-    <div className="bg-[rgb(41,41,41)] rounded-xl max-w-4xl mx-auto mt-10">
+    <div className="bg-[rgb(41,41,41)] rounded-lg max-w-4xl mx-auto mt-10 border border-dark-secondary">
       <CalendarHead />
       <div className=" grid grid-cols-7 gap-3 p-8">
         {days.map((day, i) => (
