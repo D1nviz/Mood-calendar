@@ -44,6 +44,8 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
       : "default"
     : "ghost";
 
+    const moreThenCurrentDay = moment().format("DD") >= date.date
+
   const handleMoodButtonClick = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -53,20 +55,20 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
       <div className="col-span-3 grid-rows-1">{date.date}</div>
       <div className="col-span-3 flex justify-center items-center">
         {selectedEmoji === "unselected" ? (
-          isCurrentMonth ? (
+          isCurrentMonth && moreThenCurrentDay ? (
             <MoodButton onClick={handleMoodButtonClick} />
           ) : null
         ) : (
           <motion.div
-            initial={{ opacity: 0.25, rotateX: 0 }}
-            animate={{ opacity: 1, y: 0, rotateY: 360 }}
-            transition={{ duration: 0.5 }}
-            whileHover={{ rotateY: 180 }}
+            initial={{ scale: 0.3 }}
+            animate={{ scale: [0.3, 1.2, 1] }}
+            transition={{ duration: 0.5, times: [0, 0.3, 1] }}
           >
             <CurrentEmoji
               size={36}
               onClick={handleMoodButtonClick}
               cursor={"pointer"}
+              className="hover:scale-110 duration-200"
             />
           </motion.div>
         )}

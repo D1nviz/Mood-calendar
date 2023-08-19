@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import Header from "@/components/Header";
 import Menu from "@/components/Menu";
-import GuidanceModal from "@/components/ui/GuidanceModal";
 
 export const metadata: Metadata = {
   title: "Mood Calendar",
@@ -21,7 +20,7 @@ export default function RootLayout({
         <Header />
         <div className="flex">
           <Menu />
-          <main className="basis-full h-screen">
+          <main className="basis-full min-h-[640px]">
            {children}
           </main>
         </div>

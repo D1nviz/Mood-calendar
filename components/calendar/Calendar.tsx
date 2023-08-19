@@ -1,4 +1,7 @@
+"use client";
+
 import React, { FC } from "react";
+import { motion } from "framer-motion";
 import { createCalendar } from "../lib/utils";
 import CalendarSquare from "./CalendarSquare";
 import { days } from "@/configs/days";
@@ -13,24 +16,42 @@ const Calendar: FC = () => {
   //Add Blur & Shade after open emoji modal
   //Finalize registration & login
   //Add db to project
-  //Add Profile with statistic 
+  //Add Profile with statistic
   //Add Animations (framer)
 
   return (
-    <div className="bg-[rgb(41,41,41)] rounded-lg max-w-4xl mx-auto mt-10 border border-dark-secondary">
+    <motion.div
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 2 }}
+      className="bg-[rgb(41,41,41)] rounded-lg max-w-4xl mx-auto mt-10 border border-dark-secondary"
+    >
       <CalendarHead />
       <div className=" grid grid-cols-7 gap-3 p-8">
         {days.map((day, i) => (
-          <span key={i} className="col-span-1 mx-auto text-lg font-semibold">
+          <motion.span
+            initial={{ opacity: 0.25, y: -40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.1 * i, ease: "easeOut" }}
+            key={i}
+            className="col-span-1 mx-auto text-lg font-semibold"
+          >
             {day}
-          </span>
+          </motion.span>
         ))}
 
-        {calendar.map((date) => (
-          <CalendarSquare key={date.id} date={date} />
+        {calendar.map((date, i) => (
+          <motion.div
+            key={date.id}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.3, delay: 0.1 * i, ease: "easeOut" }}
+          >
+            <CalendarSquare date={date} />
+          </motion.div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

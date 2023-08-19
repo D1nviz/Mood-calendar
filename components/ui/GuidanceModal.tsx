@@ -28,10 +28,10 @@ const Guidance: FC<GuidanceProps> = ({ isModalOpened, setIsModalOpened }) => {
           animate={{ opacity: 1, x: 0, scale: 1 }}
           exit={{ opacity: 0, y: -350 }}
           transition={{ duration: 0.4 }}
-          className="absolute z-30 backdrop-blur-sm top-0 left-0 w-full h-full flex justify-center items-center modal-bg"
+          className="absolute z-30 backdrop-blur-sm top-0 left-0 w-full h-full flex justify-center modal-bg"
           onClick={handleModalBg}
         >
-          <div className="w-1/4 h-3/4 bg-dark-primary border border-dark-tertiary rounded-lg">
+          <div className="w-1/4 h-3/4 mt-16 bg-dark-primary border border-dark-tertiary rounded-lg">
             <div className="flex justify-end p-2">
               <button
                 onClick={handleModal}
@@ -43,7 +43,7 @@ const Guidance: FC<GuidanceProps> = ({ isModalOpened, setIsModalOpened }) => {
             <div>
               <h3 className="text-center text-xl font-semibold">Hey, Gey!</h3>
               <p>
-                
+
               </p>
             </div>
           </div>
