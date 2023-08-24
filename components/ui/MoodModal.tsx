@@ -43,9 +43,9 @@ const MoodModal: FC<MoodModalProps> = ({
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3, delay: i*0.1 }}
+              key={id}
             >
               <Icon
-                key={id}
                 onClick={() => handleSelectedEmoji(id)}
                 size={32}
                 cursor={"pointer"}
