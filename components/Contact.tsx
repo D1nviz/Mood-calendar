@@ -2,11 +2,22 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { sendEmail } from "@/actions/sendEmail";
 import toast, { Toaster } from "react-hot-toast";
 import SubmitButton from "./ui/SubmitButton";
+import { sendEmail } from "@/actions/sendEmail";
 
 const Contact = () => {
+  
+  const formAction = async (formData:FormData) => {
+    const { data, error } = await sendEmail(formData);
+
+    if (error) {
+      return toast.error(error);
+     
+    }
+
+    toast.success("Email sent successfully!");
+  }
   return (
     <>
       <Toaster position="top-center" />
@@ -19,29 +30,16 @@ const Contact = () => {
       >
         <h2 className="text-xl">
           Please contact me directly at{" "}
-          <a className="font-semibold underline underline-offset-2" href="mailto:eugene.hetsyanyn@gmail.com">
+          <a
+            className="font-semibold underline underline-offset-2"
+            href="mailto:eugene.hetsyanyn@gmail.com"
+          >
             eugene.hetsyanyn@gmail.com
           </a>{" "}
           or through this form.
         </h2>
 
-        <form
-          className="flex flex-col mt-10 text-black"
-          action={async (formData) => {
-            const { error } = await sendEmail(formData);
-
-            if (error) {
-              toast.error(error);
-              return;
-            }
-            toast.success("Successfully", {
-              style: {
-                color: "#f6f6f6",
-                background: "#575757"
-              },
-            });
-          }}
-        >
+        <form className="flex flex-col mt-10 text-black" action={formAction}>
           <input
             className="h-14 px-4 rounded-lg text-text-color-primary  bg-dark-tertiary outline-none placeholder:text-zinc-400 focus:outline-zinc-400 outline-1 duration-200"
             name="senderEmail"
@@ -63,7 +61,6 @@ const Contact = () => {
       </motion.section>
     </>
   );
-}
-
+};
 
 export default Contact;

@@ -3,6 +3,7 @@ const nextConfig = {
   experimental: {
     serverActions: true,
   },
+  basePath: "/"
 };
 
 module.exports = nextConfig;

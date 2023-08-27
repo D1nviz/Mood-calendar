@@ -12,7 +12,7 @@ export const sendEmail = async (formData: FormData) => {
   const message = formData.get("message");
 
 
-  if (!validateString(senderEmail, 500)) {
+  if (!validateString(senderEmail, 50)) {
     return {
       error: "Invalid sender email",
     };
