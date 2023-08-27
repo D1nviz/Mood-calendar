@@ -12,7 +12,7 @@
 }
 
 .nav-item {
-  @apply px-3 py-2 rounded-md flex flex-col items-center mb-2 hover:bg-dark-tertiary duration-200
+  @apply w-[86px] px-4 py-2 rounded-md flex flex-col items-center hover:bg-dark-tertiary duration-200
 }
 .my-blur {
   backdrop-filter: blur(100px);

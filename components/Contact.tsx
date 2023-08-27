@@ -6,7 +6,7 @@ import { sendEmail } from "@/actions/sendEmail";
 import toast, { Toaster } from "react-hot-toast";
 import SubmitButton from "./ui/SubmitButton";
 
-export default function Contact() {
+const Contact = () => {
   return (
     <>
       <Toaster position="top-center" />
@@ -15,11 +15,11 @@ export default function Contact() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 1 }}
         id="contact"
-        className="mb-20 w-[min(100%,38rem)] text-center mx-auto mt-16 relative"
+        className="bg-dark-secondary p-7 rounded-md mb-20 w-[min(100%,38rem)] text-center mx-auto mt-16 relative"
       >
         <h2 className="text-xl">
           Please contact me directly at{" "}
-          <a className="underline" href="mailto:eugene.hetsyanyn@gmail.com">
+          <a className="font-semibold underline underline-offset-2" href="mailto:eugene.hetsyanyn@gmail.com">
             eugene.hetsyanyn@gmail.com
           </a>{" "}
           or through this form.
@@ -43,15 +43,16 @@ export default function Contact() {
           }}
         >
           <input
-            className="h-14 px-4 rounded-lg  bg-text-color-primary outline-none"
+            className="h-14 px-4 rounded-lg text-text-color-primary  bg-dark-tertiary outline-none placeholder:text-zinc-400 focus:outline-zinc-400 outline-1 duration-200"
             name="senderEmail"
             type="email"
             required
             maxLength={500}
             placeholder="Your email"
+            autoComplete="off"
           />
           <textarea
-            className="h-52 my-3 rounded-lg  p-4 bg-text-color-primary  outline-none"
+            className="h-52 my-3 rounded-lg text-text-color-primary  p-4 bg-dark-tertiary placeholder:text-zinc-400  outline-none focus:outline-zinc-400 outline-1 duration-200"
             name="message"
             placeholder="Your message"
             required
@@ -63,3 +64,6 @@ export default function Contact() {
     </>
   );
 }
+
+
+export default Contact;

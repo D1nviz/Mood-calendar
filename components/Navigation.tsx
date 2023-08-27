@@ -17,7 +17,7 @@ const Navigation: FC = () => {
   return (
     <>
       <nav>
-        <ul className="flex flex-col text-sm">
+        <ul className="w-72 flex text-sm justify-between">
           {links.map(({ label, path, Icon }, i) => (
             <Link key={i} href={path}>
               <li

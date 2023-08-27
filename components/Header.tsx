@@ -1,16 +1,16 @@
 import { FC } from "react";
-import Avatar from "./ui/Avatar";
 import Wrapper from "./layouts/Wrapper";
-import { AvatarSessionProvider } from "./AvatarSessionProvider";
+import Navigation from "./Navigation";
 
 const Header: FC = () => {
   return (
     <header className="bg-dark-secondary rounded-lg mt-4 mx-4 overflow-hidden">
-      <Wrapper className="flex justify-between items-center py-4">
-        <h1 className=" font-bold text-2xl pl-3">Mood calendar</h1>
-        {/* <AvatarSessionProvider>
-          <Avatar />
-        </AvatarSessionProvider> */}
+      <Wrapper className="flex justify-between items-center py-2 px-3">
+        <h1 className=" font-bold text-2xl">Mood calendar</h1>
+        <Navigation />
+        <span className="font-bold text-lg bg-dark-tertiary p-3 rounded-md">
+          Take care of your mood
+        </span>
       </Wrapper>
     </header>
   );
