@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { cva } from "class-variance-authority";
 import moment from "moment";
@@ -15,7 +15,7 @@ interface CalendarSquareProps {
 }
 
 const calendarSquareVariants = cva(
-  "relative grid grid-cols-3 grid-rows-3 items-center rounded h-16 text-right py-1 px-2 duration-200 group",
+  "relative grid grid-cols-3 grid-rows-3 items-center rounded h-[70px] text-right py-1 px-2 duration-200 group",
   {
     variants: {
       variant: {
@@ -35,6 +35,15 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedEmoji, setSelectedEmoji] = useState<string>("unselected");
 
+  useEffect(() => {
+    const storedEmoji = localStorage.getItem(
+      `emoji_${date.date}${date.month},${date.year}`
+    );
+    if (storedEmoji) {
+      setSelectedEmoji(storedEmoji);
+    }
+  }, []);
+
   const isCurrentMonth = date.month === moment().format("MM");
   const CurrentEmoji = emoji.find((e) => e.id === selectedEmoji)?.Icon;
 
@@ -44,7 +53,7 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
       : "default"
     : "ghost";
 
-    const moreThenCurrentDay = moment().format("DD") >= date.date
+  const moreThenCurrentDay = moment().format("DD") >= date.date;
 
   const handleMoodButtonClick = () => {
     setIsModalOpen(!isModalOpen);
@@ -79,6 +88,7 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
         setSelectedEmoji={setSelectedEmoji}
         setIsModalOpen={setIsModalOpen}
         isModalOpen={isModalOpen}
+        date={date}
       />
     </div>
   );

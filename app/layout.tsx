@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
-
+import Header from "@/components/Header";
+import Menu from "@/components/Menu";
 
 export const metadata: Metadata = {
   title: "Mood Calendar",
@@ -19,8 +20,17 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-dark-primary text-text-color-primary overflow-x-hidden`}>
-        {children}
+      <body
+        className={`${inter.className} bg-dark-primary text-text-color-primary overflow-x-hidden`}
+      >
+        <Header />
+        <div className="flex">
+          <Menu />
+          <main className="basis-full min-h-[640px]">{children}</main>
+        </div>
+        <footer className="absolute bottom-5 right-5 text-xs">
+          &copy; 2023 by Dinviz <br /> All rights reserved
+        </footer>
       </body>
     </html>
   );

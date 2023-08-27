@@ -5,7 +5,6 @@ import Credentials from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 
-
 const prisma = new PrismaClient();
 
 export const authConfig: AuthOptions = {
@@ -53,7 +52,7 @@ export const authConfig: AuthOptions = {
   },
   debug: process.env.NODE_ENV === "development",
   session: {
-    strategy: "jwt"
+    strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_SECRET
+  secret: process.env.NEXTAUTH_SECRET,
 };

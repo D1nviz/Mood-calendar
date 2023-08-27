@@ -10,21 +10,12 @@ import CalendarHead from "./CalendarHead";
 const Calendar: FC = () => {
   const calendar = createCalendar();
 
-  //Todos
-
-  //Add help button, modal with instruction
-  //Add Blur & Shade after open emoji modal
-  //Finalize registration & login
-  //Add db to project
-  //Add Profile with statistic
-  //Add Animations (framer)
-
   return (
-    <motion.div
+    <motion.section
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 2 }}
-      className="bg-[rgb(41,41,41)] rounded-lg max-w-4xl mx-auto mt-10 border border-dark-secondary"
+      transition={{ duration: 1 }}
+      className="bg-[rgb(41,41,41)] rounded-lg max-w-5xl mx-auto mt-10 border border-dark-secondary"
     >
       <CalendarHead />
       <div className=" grid grid-cols-7 gap-3 p-8">
@@ -33,7 +24,7 @@ const Calendar: FC = () => {
             initial={{ opacity: 0.25, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 * i, ease: "easeOut" }}
-            whileHover={{scale: 1.1}}
+            whileHover={{ scale: 1.1 }}
             key={i}
             className="col-span-1 mx-auto text-lg font-semibold"
           >
@@ -52,7 +43,7 @@ const Calendar: FC = () => {
           </motion.div>
         ))}
       </div>
-    </motion.div>
+    </motion.section>
   );
 };
 

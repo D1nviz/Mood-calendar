@@ -12,7 +12,7 @@ const CalendarHead: FC = () => {
       <motion.h2
         initial={{ opacity: 0, y: -100 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5}}
+        transition={{ duration: 0.5 }}
       >
         {monthName}
       </motion.h2>

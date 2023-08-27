@@ -12,7 +12,7 @@
 }
 
 .nav-item {
-  @apply px-1 py-2 rounded-md flex flex-col items-center mb-2 hover:bg-dark-tertiary duration-200
+  @apply px-3 py-2 rounded-md flex flex-col items-center mb-2 hover:bg-dark-tertiary duration-200
 }
 .my-blur {
   backdrop-filter: blur(100px);
@@ -22,7 +22,7 @@
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {

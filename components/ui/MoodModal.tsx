@@ -2,8 +2,10 @@ import React, { FC } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconType } from "react-icons";
 import { IoCloseSharp } from "react-icons/io5";
+import { IDate } from "@/types";
 
 interface MoodModalProps {
+  date: IDate
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   emoji: { Icon: IconType; description: string; id: string }[];
@@ -11,14 +13,17 @@ interface MoodModalProps {
 }
 
 const MoodModal: FC<MoodModalProps> = ({
+  date,
   isModalOpen,
   emoji,
   setSelectedEmoji,
   setIsModalOpen,
 }) => {
   const handleIsModalOpen = () => setIsModalOpen(false);
+  
   const handleSelectedEmoji = (id: string) => {
     setSelectedEmoji(id);
+    global.localStorage.setItem(`emoji_${date.date}${date.month},${date.year}`, id);
     setIsModalOpen(false);
   };
 
@@ -33,7 +38,7 @@ const MoodModal: FC<MoodModalProps> = ({
           className="justify-evenly shadow-2xl  py-5 bg-dark-primary rounded-md border border-dark-tertiary hidden absolute z-20 -inset-x-1/2 -top-16 group-hover:flex"
         >
           <IoCloseSharp
-            className="absolute right-1 top-1 cursor-pointer"
+            className="absolute right-1 top-1 cursor-pointer hover:rotate-90 duration-200"
             size={20}
             onClick={handleIsModalOpen}
           />
