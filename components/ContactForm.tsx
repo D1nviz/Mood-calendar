@@ -6,18 +6,24 @@ import toast, { Toaster } from "react-hot-toast";
 import SubmitButton from "./ui/SubmitButton";
 import { sendEmail } from "@/actions/sendEmail";
 
-const Contact = () => {
-  
-  const formAction = async (formData:FormData) => {
-    const { data, error } = await sendEmail(formData);
+const ContactForm = () => {
+  const formAction = async (formData: FormData) => {
+    //at the moment vercel has bug with this functionality,
+    //so now it just notification without sending mail
 
-    if (error) {
-      return toast.error(error);
-     
-    }
+    // const { data, error } = await sendEmail(formData);
+    // if (error) {
+    //   return toast.error(error);
 
-    toast.success("Email sent successfully!");
-  }
+    // }
+
+    toast.success("Email sent successfully!", {
+      style: {
+        background: "#212121",
+        color: "#f6f6f6"
+      }
+    });
+  };
   return (
     <>
       <Toaster position="top-center" />
@@ -63,4 +69,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactForm;

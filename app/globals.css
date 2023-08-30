@@ -49,3 +49,23 @@
     50%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%}
     66%{background-size:calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%  }
 }
+
+
+@keyframes spin-slow {
+  0%, 100% {
+    transform: translateX(300px);
+  }
+  25% {
+    transform: translateY(300px);
+  }
+  50% {
+    transform: translateX(-300px);
+  }
+  75% {
+    transform: translateY(-300px);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 25s linear infinite;
+}
