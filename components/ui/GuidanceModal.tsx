@@ -21,7 +21,7 @@ const Guidance: FC<GuidanceProps> = ({ isModalOpened, setIsModalOpened }) => {
   };
 
   return (
-    <AnimatePresence>
+    <AnimatePresence> 
       {isModalOpened && (
         <motion.div
           initial={{ opacity: 0.25, x: 100, y: "-35%", scale: 0.2 }}
