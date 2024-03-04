@@ -11,11 +11,11 @@ export function cn(...inputs: ClassValue[]) {
 };
 
 
-export function createCalendar() {
+export function createCalendar(month: number) {
   moment.updateLocale("en", { week: { dow: 1 } });
 
-  const startDate = moment().startOf("month").startOf("week");
-  const endDate = moment().endOf("month").endOf("week");
+  const startDate = moment().month(month).startOf("month").startOf("week");
+  const endDate = moment().month(month).endOf("month").endOf("week");
 
   const calendar:IDate[] = [];
   const date = startDate.clone();
@@ -32,9 +32,7 @@ export function createCalendar() {
   }
 
   return calendar;
-
 }
-
 export const validateString = (
   value: unknown,
   maxLength: number

@@ -14,19 +14,25 @@ interface CalendarSquareProps {
   date: IDate;
 }
 
+enum Variants {
+  Default = "default",
+  Ghost = "ghost",
+  Active = "active",
+}
+
 const calendarSquareVariants = cva(
   "relative grid grid-cols-3 grid-rows-3 items-center rounded h-[70px] text-right py-1 px-2 duration-200 group",
   {
     variants: {
       variant: {
-        default:
+        [Variants.Default]:
           "bg-dark-secondary border border-transparent hover:border-dark-tertiary",
-        ghost: "bg-dark-primary text-dark-tertiary",
-        active: "bg-dark-tertiary border border-text-color-primary",
+        [Variants.Ghost]: "bg-dark-primary text-dark-tertiary",
+        [Variants.Active]: "bg-dark-tertiary border border-text-color-primary",
       },
     },
     defaultVariants: {
-      variant: "default",
+      variant: Variants.Default,
     },
   }
 );
@@ -35,23 +41,33 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [selectedEmoji, setSelectedEmoji] = useState<string>("unselected");
 
+  const emojiKey = `emoji_${date.date}${date.month},${date.year}`;
+
   useEffect(() => {
-    const storedEmoji = localStorage.getItem(
-      `emoji_${date.date}${date.month},${date.year}`
-    );
+    const storedEmoji = localStorage.getItem(emojiKey);
     if (storedEmoji) {
       setSelectedEmoji(storedEmoji);
     }
   }, []);
+
+  const handleEmojiSelection = (newEmoji: string) => {
+    if (newEmoji === selectedEmoji) {
+      setSelectedEmoji("unselected");
+      localStorage.removeItem(emojiKey);
+    } else {
+      setSelectedEmoji(newEmoji);
+      localStorage.setItem(emojiKey, newEmoji);
+    }
+  };
 
   const isCurrentMonth = date.month === moment().format("MM");
   const CurrentEmoji = emoji.find((e) => e.id === selectedEmoji)?.Icon;
 
   const variant = isCurrentMonth
     ? moment().format("DD") === date.date
-      ? "active"
-      : "default"
-    : "ghost";
+      ? Variants.Active
+      : Variants.Default
+    : Variants.Ghost;
 
   const moreThenCurrentDay = moment().format("DD") >= date.date;
 
@@ -85,7 +101,7 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
 
       <MoodModal
         emoji={emoji}
-        setSelectedEmoji={setSelectedEmoji}
+        setSelectedEmoji={handleEmojiSelection}
         setIsModalOpen={setIsModalOpen}
         isModalOpen={isModalOpen}
         date={date}

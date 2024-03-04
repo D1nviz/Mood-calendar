@@ -5,25 +5,23 @@ import { IoCloseSharp } from "react-icons/io5";
 import { IDate } from "@/types";
 
 interface MoodModalProps {
-  date: IDate
+  date: IDate;
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   emoji: { Icon: IconType; description: string; id: string }[];
-  setSelectedEmoji: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedEmoji: (newEmoji: string) => void;
 }
 
 const MoodModal: FC<MoodModalProps> = ({
-  date,
   isModalOpen,
   emoji,
   setSelectedEmoji,
   setIsModalOpen,
 }) => {
   const handleIsModalOpen = () => setIsModalOpen(false);
-  
-  const handleSelectedEmoji = (id: string) => {
+
+  const handleEmojiClick = (id: string) => {
     setSelectedEmoji(id);
-    global.localStorage.setItem(`emoji_${date.date}${date.month},${date.year}`, id);
     setIsModalOpen(false);
   };
 
@@ -44,14 +42,14 @@ const MoodModal: FC<MoodModalProps> = ({
           />
           {emoji.map(({ Icon, id }, i) => (
             <motion.div
-              initial={{ opacity: 0.25,x: 100 }}
+              initial={{ opacity: 0.25, x: 100 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3, delay: i*0.1 }}
+              transition={{ duration: 0.3, delay: i * 0.1 }}
               key={id}
             >
               <Icon
-                onClick={() => handleSelectedEmoji(id)}
+                onClick={() => handleEmojiClick(id)}
                 size={32}
                 cursor={"pointer"}
               />

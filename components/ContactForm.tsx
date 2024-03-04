@@ -8,20 +8,16 @@ import { sendEmail } from "@/actions/sendEmail";
 
 const ContactForm = () => {
   const formAction = async (formData: FormData) => {
-    //at the moment vercel has bug with this functionality,
-    //so now it just notification without sending mail
-
-    // const { data, error } = await sendEmail(formData);
-    // if (error) {
-    //   return toast.error(error);
-
-    // }
+    const { error } = await sendEmail(formData);
+    if (error) {
+      return toast.error(error);
+    }
 
     toast.success("Email sent successfully!", {
       style: {
         background: "#212121",
-        color: "#f6f6f6"
-      }
+        color: "#f6f6f6",
+      },
     });
   };
   return (
@@ -30,7 +26,7 @@ const ContactForm = () => {
       <motion.section
         initial={{ opacity: 0, scale: 0.75 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1 }}
+        transition={{ duration: 0.5 }}
         id="contact"
         className="bg-dark-secondary p-7 rounded-md mb-20 w-[min(100%,38rem)] text-center mx-auto mt-16 relative"
       >
