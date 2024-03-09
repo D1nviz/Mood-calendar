@@ -4,9 +4,11 @@ import { FC, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
-import { links } from "@/configs/links";
-import { BiBook } from "react-icons/bi";
+
 import GuidanceModal from "./ui/GuidanceModal";
+
+import { BiBook } from "react-icons/bi";
+import { links } from "@/configs/links";
 
 const Navigation: FC = () => {
   const currentPath = usePathname();
@@ -36,7 +38,10 @@ const Navigation: FC = () => {
           </li>
         </ul>
       </nav>
-      <GuidanceModal isModalOpened={isModalOpened} setIsModalOpened={setIsModalOpened}/>
+      <GuidanceModal
+        isModalOpened={isModalOpened}
+        setIsModalOpened={setIsModalOpened}
+      />
     </>
   );
 };

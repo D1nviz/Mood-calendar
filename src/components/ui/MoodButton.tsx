@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { FaPlus } from "react-icons/fa";
-import { cn } from "../lib/utils";
+import { cn } from "../../lib/utils";
 
 interface MoodButtonProps extends React.HTMLAttributes<HTMLButtonElement> {}
 

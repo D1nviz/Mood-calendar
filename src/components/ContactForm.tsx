@@ -4,7 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import toast, { Toaster } from "react-hot-toast";
 import SubmitButton from "./ui/SubmitButton";
-import { sendEmail } from "@/actions/sendEmail";
+import { sendEmail } from "@/src/actions/sendEmail";
 
 const ContactForm = () => {
   const formAction = async (formData: FormData) => {

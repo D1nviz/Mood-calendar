@@ -2,8 +2,8 @@
 
 import React from "react";
 import { Resend } from "resend";
-import { validateString, getErrorMessage} from  "@/components/lib/utils";
-import ContactFormEmail from "@/email/contact-form-email";
+import { valDateTString, getErrorMessage} from  "@/lib/utils";
+import ContactFormEmail from "@/src/email/contact-form-email";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -12,12 +12,12 @@ export const sendEmail = async (formData: FormData) => {
   const message = formData.get("message");
 
 
-  if (!validateString(senderEmail, 50)) {
+  if (!valDateTString(senderEmail, 50)) {
     return {
       error: "Invalid sender email",
     };
   }
-  if (!validateString(message, 5000)) {
+  if (!valDateTString(message, 5000)) {
     return {
       error: "Invalid message",
     };

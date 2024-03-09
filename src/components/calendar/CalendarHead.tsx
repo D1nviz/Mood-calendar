@@ -2,22 +2,25 @@
 
 import { FC } from "react";
 import { motion } from "framer-motion";
-import ChangeMonthButton from "../ui/ChangeMounthButton";
+import ChangeMonthButton from "@/components/ui/ChangeMounthButton";
+import { months } from "@/configs/months";
+import { DateT, MonthValueT } from "@/types";
+import { decreaseDate, increaseDate } from "@/lib/utils";
 
 type CalendarHeadProps = {
-  currentMonth: string;
-  setCurrentMonth: React.Dispatch<React.SetStateAction<number>>;
+  currentMonth: MonthValueT;
+  setCurrentDate: React.Dispatch<React.SetStateAction<Omit<DateT, "id">>>;
 };
 const CalendarHead: FC<CalendarHeadProps> = ({
   currentMonth,
-  setCurrentMonth,
+  setCurrentDate,
 }) => {
   const handlePrevMonth = () => {
-    setCurrentMonth((prevMonth) => prevMonth - 1);
+    setCurrentDate((prevMonth) => decreaseDate(prevMonth));
   };
 
   const handleNextMonth = () => {
-    setCurrentMonth((nextMonth) => nextMonth + 1);
+    setCurrentDate((prevMonth) => increaseDate(prevMonth));
   };
   return (
     <div className="rounded-xl pt-5 flex justify-center ">

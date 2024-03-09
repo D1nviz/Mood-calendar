@@ -1,9 +1,9 @@
 import { HiOutlineHome } from "react-icons/hi";
 import { BiMailSend } from "react-icons/bi";
 
-import { ILink } from "@/types";
+import { LinkT } from "@/src/types";
 
-export const links: ILink[] = [
+export const links: LinkT[] = [
   { label: "Home", path: "/", Icon: HiOutlineHome },
   { label: "Contacts", path: "/contacts", Icon: BiMailSend },
 ];

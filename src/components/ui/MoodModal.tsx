@@ -2,10 +2,8 @@ import React, { FC } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IconType } from "react-icons";
 import { IoCloseSharp } from "react-icons/io5";
-import { IDate } from "@/types";
 
 interface MoodModalProps {
-  date: IDate;
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   emoji: { Icon: IconType; description: string; id: string }[];

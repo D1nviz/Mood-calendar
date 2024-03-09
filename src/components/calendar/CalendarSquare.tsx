@@ -4,14 +4,14 @@ import { FC, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { cva } from "class-variance-authority";
 import moment from "moment";
-import { IDate } from "@/types";
-import { cn } from "../lib/utils";
+import { DateT } from "@/types";
+import { cn } from "../../lib/utils";
 import { emoji } from "@/configs/emoji";
 import MoodButton from "../ui/MoodButton";
 import MoodModal from "../ui/MoodModal";
 
 interface CalendarSquareProps {
-  date: IDate;
+  date: DateT;
 }
 
 enum Variants {
@@ -60,10 +60,13 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
     }
   };
 
-  const isCurrentMonth = date.month === moment().format("MM");
+  const currentDate = new Date();
+  const isCurrentDate =
+    date.year === currentDate.getFullYear().toString() &&
+    date.month === currentDate.getMonth().toString();
   const CurrentEmoji = emoji.find((e) => e.id === selectedEmoji)?.Icon;
 
-  const variant = isCurrentMonth
+  const variant = isCurrentDate
     ? moment().format("DD") === date.date
       ? Variants.Active
       : Variants.Default
@@ -80,7 +83,7 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
       <div className="col-span-3 grid-rows-1">{date.date}</div>
       <div className="col-span-3 flex justify-center items-center">
         {selectedEmoji === "unselected" ? (
-          isCurrentMonth && moreThenCurrentDay ? (
+          isCurrentDate && moreThenCurrentDay ? (
             <MoodButton onClick={handleMoodButtonClick} />
           ) : null
         ) : (
@@ -104,7 +107,6 @@ const CalendarSquare: FC<CalendarSquareProps> = ({ date }) => {
         setSelectedEmoji={handleEmojiSelection}
         setIsModalOpen={setIsModalOpen}
         isModalOpen={isModalOpen}
-        date={date}
       />
     </div>
   );

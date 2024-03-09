@@ -1,21 +1,22 @@
 "use client";
 import React, { FC, useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { createCalendar } from "../lib/utils";
-import CalendarSquare from "./CalendarSquare";
+import { createCalendar, getCurrentDate } from "@/lib/utils";
+import CalendarSquare from "@/components/calendar/CalendarSquare";
 import { days } from "@/configs/days";
-import CalendarHead from "./CalendarHead";
-import moment from "moment";
+import CalendarHead from "@/components/calendar/CalendarHead";
+import { months } from "@/configs/months";
+import { DateT, MonthKeyT } from "@/types";
 
 const Calendar: FC = () => {
-  const [currentMonth, setCurrentMonth] = useState(moment().month());
-  const [calendar, setCalendar] = useState(createCalendar(currentMonth));
+  const [currentDate, setCurrentDate] = useState<Omit<DateT, "id">>(
+    getCurrentDate()
+  );
+  const [calendar, setCalendar] = useState(createCalendar(currentDate.month));
 
   useEffect(() => {
-    setCalendar(createCalendar(currentMonth));
-  }, [currentMonth]);
-
-  const currentMonthName = moment().month(currentMonth).format("MMMM");
+    setCalendar(createCalendar(currentDate.month));
+  }, [currentDate]);
 
   return (
     <motion.section
@@ -24,10 +25,7 @@ const Calendar: FC = () => {
       transition={{ duration: 0.5 }}
       className="bg-[rgb(41,41,41)] rounded-lg max-w-5xl mx-auto mt-10 border border-dark-secondary"
     >
-      <CalendarHead
-        currentMonth={currentMonthName}
-        setCurrentMonth={setCurrentMonth}
-      />
+      <CalendarHead currentMonth={"March"} setCurrentDate={setCurrentDate} />
       <div className=" grid grid-cols-7 gap-3 p-8">
         {days.map((day, i) => (
           <motion.span
