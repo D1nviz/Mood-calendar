@@ -25,7 +25,10 @@ const Calendar: FC = () => {
       transition={{ duration: 0.5 }}
       className="bg-[rgb(41,41,41)] rounded-lg max-w-5xl mx-auto mt-10 border border-dark-secondary"
     >
-      <CalendarHead currentMonth={"March"} setCurrentDate={setCurrentDate} />
+      <CalendarHead
+        currentMonth={months[Number(currentDate.month) as MonthKeyT]}
+        setCurrentDate={setCurrentDate}
+      />
       <div className=" grid grid-cols-7 gap-3 p-8">
         {days.map((day, i) => (
           <motion.span
