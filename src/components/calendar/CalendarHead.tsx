@@ -8,7 +8,7 @@ import { DateT, MonthValueT } from "@/types";
 import { decreaseDate, increaseDate } from "@/lib/utils";
 
 type CalendarHeadProps = {
-  currentMonth: MonthValueT;
+  currentMonth: MonthValueT | keyof typeof months;
   setCurrentDate: React.Dispatch<React.SetStateAction<Omit<DateT, "id">>>;
 };
 const CalendarHead: FC<CalendarHeadProps> = ({
